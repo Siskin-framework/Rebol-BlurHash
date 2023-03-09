@@ -23,13 +23,13 @@ jobs:
       run: ./siskin Rebol-BlurHash.nest blurhash-windows-x86
 
     - name: Prepare 32bit Rebol/BlurHash extension
-      run:  MOVE ./build/blurhash-windows-x86.dll ./build/blurhash-windows-x86.rebx
+      run:  MOVE ./build/blurhash-windows-x86.dll ./blurhash-windows-x86.rebx
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest blurhash-windows-x64
 
     - name: Prepare 64bit Rebol/BlurHash extension
-      run:  MOVE ./build/blurhash-windows-x64.dll ./build/blurhash-windows-x64.rebx
+      run:  MOVE ./build/blurhash-windows-x64.dll ./blurhash-windows-x64.rebx
 
     - name: Install Rebol for extension test
       uses: oldes/install-rebol@v3.10.3
@@ -42,7 +42,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: Rebol-BlurHash-CI-${{github.run_id}}
-        path: ./build/*.rebx
+        path: ./*.rebx
 
   linux:
     runs-on: ubuntu-20.04
@@ -57,7 +57,7 @@ jobs:
       run: ./siskin Rebol-BlurHash.nest --clean blurhash-linux-x64
 
     - name: Prepare 64bit Rebol BlurHash extension
-      run:  mv ./build/blurhash-linux-x64.so ./build/blurhash-linux-x64.rebx
+      run:  mv ./build/blurhash-linux-x64.so ./blurhash-linux-x64.rebx
 
     - name: Install Rebol for extension test
       uses: oldes/install-rebol@v3.10.3
@@ -68,12 +68,12 @@ jobs:
       run:  ./rebol3 ci-test.r3
 
     - name: Compress 64bit Rebol/BlurHash extension
-      run:  gzip -9 ./build/blurhash-linux-x64.rebx
+      run:  gzip -9 ./blurhash-linux-x64.rebx
 
     - uses: actions/upload-artifact@v3
       with:
         name: Rebol-BlurHash-CI-${{github.run_id}}
-        path: ./build/*.gz
+        path: ./*.gz
 
   macos:
     runs-on: macos-latest
@@ -88,7 +88,7 @@ jobs:
       run: ./siskin Rebol-BlurHash.nest blurhash-macos-x64
 
     - name: Prepare 64bit Rebol BlurHash extension
-      run:  mv ./build/blurhash-macos-x64.dylib ./build/blurhash-macos-x64.rebx
+      run:  mv ./build/blurhash-macos-x64.dylib ./blurhash-macos-x64.rebx
 
     - name: Install Rebol for extension test
       uses: oldes/install-rebol@v3.10.3
@@ -99,10 +99,10 @@ jobs:
       run:  ./rebol3 ci-test.r3
 
     - name: Compress 64bit Rebol/BlurHash extension
-      run:  gzip -9 ./build/blurhash-macos-x64.rebx
+      run:  gzip -9 ./blurhash-macos-x64.rebx
 
     - uses: actions/upload-artifact@v3
       with:
         name: Rebol-BlurHash-CI-${{github.run_id}}
-        path: ./build/*.gz
+        path: ./*.gz
 

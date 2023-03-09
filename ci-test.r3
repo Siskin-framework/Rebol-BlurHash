@@ -4,11 +4,13 @@ Rebol [
 
 print ["Running test on Rebol build:" mold to-block system/build]
 
-;; register build directory as a location with existing modules...
-supplement system/options/module-paths to-real-file %./build/
+;; make sure that we load a fresh extension
+try [system/modules/blurhash: none]
+
+;; import the extension
+blurhash: import 'blurhash
 
 ;; print content of the module...
-blurhash: import 'blurhash
 ? blurhash
 
 image: load %test/koule.jpg
