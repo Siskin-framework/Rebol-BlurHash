@@ -23,15 +23,13 @@ jobs:
       run: ./siskin Rebol-BlurHash.nest blurhash-windows-x86
 
     - name: Prepare 32bit Rebol/BlurHash extension
-      run:  |
-        MD ./build/ 2> nul
-        MOVE ./msvc/Release-Win32/blurhash-windows-x86.dll ./build/blurhash-windows-x86.rebx
+      run:  MOVE ./build/blurhash-windows-x86.dll ./build/blurhash-windows-x86.rebx
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest blurhash-windows-x64
 
     - name: Prepare 64bit Rebol/BlurHash extension
-      run:  MOVE ./msvc/Release-x64/blurhash-windows-x64.dll ./build/blurhash-windows-x64.rebx
+      run:  MOVE ./build/blurhash-windows-x64.dll ./build/blurhash-windows-x64.rebx
 
     - name: Install Rebol for extension test
       uses: oldes/install-rebol@v3.10.3
@@ -47,7 +45,7 @@ jobs:
         path: ./build/*.rebx
 
   linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
