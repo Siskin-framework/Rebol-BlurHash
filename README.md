@@ -1,4 +1,4 @@
-[![Rebol-BlurHash CI](https://github.com/Oldes/Rebol-BlurHash/actions/workflows/main.yml/badge.svg)](https://github.com/Oldes/Rebol-BlurHash/actions/workflows/main.yml)
+[![Rebol-BlurHash CI](https://github.com/Siskin-Framework/Rebol-BlurHash/actions/workflows/main.yml/badge.svg)](https://github.com/Siskin-Framework/Rebol-BlurHash/actions/workflows/main.yml)
 
 # Rebol/BlurHash
 
@@ -42,10 +42,10 @@ blured2: resize blurhash/decode hash 32x32 512x512
 - - - - -
 
 Original image:
-![original](https://raw.githubusercontent.com/Oldes/Rebol-BlurHash/main/test/koule.jpg)
+![original](https://raw.githubusercontent.com/Siskin-Framework/Rebol-BlurHash/main/test/koule.jpg)
 
 Blured image using direct size:
-![blured1](https://raw.githubusercontent.com/Oldes/Rebol-BlurHash/main/test/koule-blur-1.png)
+![blured1](https://raw.githubusercontent.com/Siskin-Framework/Rebol-BlurHash/main/test/koule-blur-1.png)
 
 Blured image using small size 32x32 and then resized:
-![blured2](https://raw.githubusercontent.com/Oldes/Rebol-BlurHash/main/test/koule-blur-2.png)
+![blured2](https://raw.githubusercontent.com/Siskin-Framework/Rebol-BlurHash/main/test/koule-blur-2.png)
