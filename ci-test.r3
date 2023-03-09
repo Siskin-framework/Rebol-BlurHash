@@ -2,6 +2,8 @@ Rebol [
     title: "Rebol/BlurHash extension CI test"
 ]
 
+print ["Running test on Rebol build:" mold to-block system/build]
+
 ;; register build directory as a location with existing modules...
 supplement system/options/module-paths to-real-file %./build/
 
