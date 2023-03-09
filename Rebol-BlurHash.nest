@@ -67,6 +67,22 @@ files: [
 	cflags: fPIC
 ]
 
+#if Linux? [
+	cross-haiku-x86: [
+		compiler: %/tools/cross-tools-x86/bin/i586-pc-haiku-gcc
+		library:  %/system/lib/
+		flag:     "--sysroot=/tools/cross-tools-x86/sysroot"
+		:target-x86
+	]
+	cross-haiku-x64: [
+		compiler: %/tools/cross-tools-x86_64/bin/x86_64-unknown-haiku-gcc
+		library:  %/system/lib/
+		flag:     "--sysroot=/tools/cross-tools-x86_64/sysroot"
+		:target-x64
+	]
+]
+
+
 ;- generate main extension header --------------------------------
 do %src/blurhash-rebol-extension.r3 
 
@@ -99,6 +115,18 @@ eggs: only [
 			name: %blurhash-linux-arm64
 			:target-arm64
 		]
+		;-- Haiku cross-compilation from a Docker image..     
+		;@@ https://hub.docker.com/r/haiku/cross-compiler/tags
+		;@@ docker.io/oldes/rebol-dev:haiku-x86
+		"Cross-compile Rebol/BlurHash for Haiku x86" [
+			name: %blurhash-haiku-x86
+			:cross-haiku-x86
+		]
+		;@@ docker.io/oldes/rebol-dev:haiku-x64
+		"Cross-compile Rebol/BlurHash for Haiku x64" [
+			name: %blurhash-haiku-x64
+			:cross-haiku-x64
+		]
 	]
 	#if macOS? [
 		"Rebol BlurHash extension: macos_x64" [
@@ -108,6 +136,17 @@ eggs: only [
 		"Rebol BlurHash extension: macos_arm64" [
 			name: %blurhash-macos-arm64
 			:target-arm64
+		]
+	]
+
+	#if Haiku? [
+		"Rebol BlurHash extension: haiku_x86" [
+			name: %blurhash-haiku-x86
+			:target-x86
+		]
+		"Rebol BlurHash extension: haiku_x64" [
+			name: %blurhash-haiku-x64
+			:target-x64
 		]
 	]
 ]
