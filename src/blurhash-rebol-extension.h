@@ -25,9 +25,7 @@ typedef int (*MyCommandPointer)(RXIFRM *frm, void *ctx);
 #define BLURHASH_EXT_INIT_CODE \
 	"REBOL [Title: {Rebol BlurHash Extension} Type: module]\n"\
 	"encode: command [\"Encode an image using BlurHash algorithm\" img [image!] \"Source image\"]\n"\
-	"decode: command [\"Decode BlurHash string to an image\" text [any-string! binary!] \"Textual image representation\" image [image! pair!] \"Output image or size of the new image\" /contrast punch [integer!] \"The factor to improve the contrast, default = 1\"]\n"\
-	"print \"hello blur\"\n"\
-	"\n"
+	"decode: command [\"Decode BlurHash string to an image\" text [any-string! binary!] \"Textual image representation\" image [image! pair!] \"Output image or size of the new image\" /contrast punch [integer!] \"The factor to improve the contrast, default = 1\"]\n"
 
 #ifdef  USE_TRACES
 #include <stdio.h>
