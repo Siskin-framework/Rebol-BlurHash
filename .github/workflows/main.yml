@@ -34,7 +34,9 @@ jobs:
       run:  MOVE ./msvc/Release-x64/blurhash-windows-x64.dll ./build/blurhash-windows-x64.rebx
 
     - name: Install Rebol for extension test
-      uses: oldes/install-rebol@v3.10.2
+      uses: oldes/install-rebol@v3.10.3
+      with:
+        product: Bulk
 
     - name: Minimal Rebol/BlurHash extension test
       run:  ./rebol3 ci-test.r3
@@ -60,7 +62,9 @@ jobs:
       run:  mv ./build/blurhash-linux-x64.so ./build/blurhash-linux-x64.rebx
 
     - name: Install Rebol for extension test
-      uses: oldes/install-rebol@v3.10.2
+      uses: oldes/install-rebol@v3.10.3
+      with:
+        product: Bulk
 
     - name: Minimal Rebol/BlurHash extension test
       run:  ./rebol3 ci-test.r3
@@ -89,7 +93,9 @@ jobs:
       run:  mv ./build/blurhash-macos-x64.dylib ./build/blurhash-macos-x64.rebx
 
     - name: Install Rebol for extension test
-      uses: oldes/install-rebol@v3.10.2
+      uses: oldes/install-rebol@v3.10.3
+      with:
+        product: Bulk
 
     - name: Minimal Rebol/BlurHash extension test
       run:  ./rebol3 ci-test.r3
