@@ -44,9 +44,7 @@ foreach [name spec] commands [
 ]
 
 ;- additional Rebol initialization code ----------------------------------------
-append reb-code {
-print "hello blur"
-}
+;append reb-code {}
 
 ;print reb-code
 
