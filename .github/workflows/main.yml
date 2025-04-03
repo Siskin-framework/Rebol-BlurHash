@@ -14,10 +14,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.10.4
+      uses: oldes/install-siskin@v0.18.5
 
     - name: Build 32bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest blurhash-windows-x86
@@ -32,26 +32,26 @@ jobs:
       run:  MOVE ./build/blurhash-windows-x64.dll ./blurhash-windows-x64.rebx
 
     - name: Install Rebol for extension test
-      uses: oldes/install-rebol@v3.10.3
+      uses: oldes/install-rebol@v3.18.0
       with:
         product: Bulk
 
     - name: Minimal Rebol/BlurHash extension test
       run:  ./rebol3 ci-test.r3
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
-        name: Rebol-BlurHash-CI-${{github.run_id}}
+        name: Rebol-BlurHash-CI-windows-${{github.run_id}}
         path: ./*.rebx
 
   linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.10.4
+      uses: oldes/install-siskin@v0.18.5
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest --clean blurhash-linux-x64
@@ -60,7 +60,7 @@ jobs:
       run:  mv ./build/blurhash-linux-x64.so ./blurhash-linux-x64.rebx
 
     - name: Install Rebol for extension test
-      uses: oldes/install-rebol@v3.10.2
+      uses: oldes/install-rebol@v3.18.0
       with:
         product: Bulk
 
@@ -72,17 +72,17 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: Rebol-BlurHash-CI-${{github.run_id}}
+        name: Rebol-BlurHash-CI-linux-${{github.run_id}}
         path: ./*.gz
 
   macos:
     runs-on: macos-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.10.4
+      uses: oldes/install-siskin@v0.18.5
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest blurhash-macos-x64
@@ -91,7 +91,7 @@ jobs:
       run:  mv ./build/blurhash-macos-x64.dylib ./blurhash-macos-x64.rebx
 
     - name: Install Rebol for extension test
-      uses: oldes/install-rebol@v3.10.3
+      uses: oldes/install-rebol@v3.18.0
       with:
         product: Bulk
 
@@ -101,9 +101,9 @@ jobs:
     - name: Compress 64bit Rebol/BlurHash extension
       run:  gzip -9 ./blurhash-macos-x64.rebx
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
-        name: Rebol-BlurHash-CI-${{github.run_id}}
+        name: Rebol-BlurHash-CI-macos-${{github.run_id}}
         path: ./*.gz
 
 #  Haiku-x86:
