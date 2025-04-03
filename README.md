@@ -1,4 +1,8 @@
+[![rebol-blurhash](https://github.com/user-attachments/assets/3b5b60cb-d8a9-48cd-82ca-9401ec1fd01c)](https://github.com/Siskin-framework/Rebol-BlurHash)
+
 [![Rebol-BlurHash CI](https://github.com/Siskin-Framework/Rebol-BlurHash/actions/workflows/main.yml/badge.svg)](https://github.com/Siskin-Framework/Rebol-BlurHash/actions/workflows/main.yml)
+[![Gitter](https://badges.gitter.im/rebol3/community.svg)](https://app.gitter.im/#/room/#Rebol3:gitter.im)
+[![Zulip](https://img.shields.io/badge/zulip-join_chat-brightgreen.svg)](https://rebol.zulipchat.com/)
 
 # Rebol/BlurHash
 
