@@ -17,19 +17,19 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.18.5
+      uses: oldes/install-siskin@v0.18.0
 
     - name: Build 32bit Rebol/BlurHash extension
-      run: ./siskin Rebol-BlurHash.nest blurhash-windows-x86
+      run: ./siskin Rebol-BlurHash.nest --msvc blurhash-windows-x86
 
     - name: Prepare 32bit Rebol/BlurHash extension
-      run:  MOVE ./build/blurhash-windows-x86.dll ./blurhash-windows-x86.rebx
+      run:  MOVE ./msvc/Release-Win32/blurhash-windows-x86.dll ./blurhash-windows-x86.rebx
 
     - name: Build 64bit Rebol/BlurHash extension
-      run: ./siskin Rebol-BlurHash.nest blurhash-windows-x64
+      run: ./siskin Rebol-BlurHash.nest --msvc blurhash-windows-x64
 
     - name: Prepare 64bit Rebol/BlurHash extension
-      run:  MOVE ./build/blurhash-windows-x64.dll ./blurhash-windows-x64.rebx
+      run:  MOVE ./msvc/Release-x64/blurhash-windows-x64.dll ./blurhash-windows-x64.rebx
 
     - name: Install Rebol for extension test
       uses: oldes/install-rebol@v3.18.0
@@ -51,7 +51,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.18.5
+      uses: oldes/install-siskin@v0.18.0
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest --clean blurhash-linux-x64
@@ -70,7 +70,7 @@ jobs:
     - name: Compress 64bit Rebol/BlurHash extension
       run:  gzip -9 ./blurhash-linux-x64.rebx
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: Rebol-BlurHash-CI-linux-${{github.run_id}}
         path: ./*.gz
@@ -82,7 +82,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.18.5
+      uses: oldes/install-siskin@v0.18.0
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest blurhash-macos-x64
