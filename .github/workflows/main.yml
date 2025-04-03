@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.18.0
+      uses: oldes/install-siskin@v0.17.0
 
     - name: Build 32bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest --msvc blurhash-windows-x86
@@ -51,7 +51,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.18.0
+      uses: oldes/install-siskin@v0.17.0
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest --clean blurhash-linux-x64
@@ -82,7 +82,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Siskin Builder
-      uses: oldes/install-siskin@v0.18.0
+      uses: oldes/install-siskin@v0.17.0
 
     - name: Build 64bit Rebol/BlurHash extension
       run: ./siskin Rebol-BlurHash.nest blurhash-macos-x64
